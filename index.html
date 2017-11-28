@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-site-verification" content="googleb7c94f928b35e8cc.html" />
+        <meta name="description" content="GAFIT - Soluções em Automação & TI (Belo Horizonte - MG) atua no desenvolvimento de softwares Web e aplicativos para Android e iOS.">
+        <meta name="author" content="GAFIT - Soluções em Automação & TI">
+        <meta name="Keywords" content="gafit, soluções, automação, ti, tecnologia, tecnologia da informação, softwares, web, site, aplicativos, Android, iOS, belo horizonte, bh, minas gerais, mg, centro, afonso pena">
+        <meta property="og:title" content="Feliz Natal - GAFIT" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://www.gafit.com.br/" />
+        <meta property="og:description" content="GAFIT - Soluções em Automação & TI (Belo Horizonte - MG) atua no desenvolvimento de softwares Web e aplicativos para Android e iOS." />
+        <link rel="canonical" href="http://www.gafit.com.br/" />
+        <meta property="og:image" content="http://gafit.com.br/img/bg.jpg">
+        <meta name="description" content="GAFIT">
+        <meta name="author" content="GAFIT">
+        <link rel="shortcut icon" href="http://gafit.com.br/img/favicon/GAFIT-favicon.ico">
+        <link rel="apple-touch-icon image_src" href="http://gafit.com.br/img/favicon/GAFIT-favicon.png">
+
+        <title>Feliz Natal - GAFIT</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <style>
+            html, body{
+                height:100vh;
+                width:100vw;
+                margin:0;
+                padding:0;
+                overflow:hidden;
+            }
+            /*.title{
+                text-align:center;
+                position:absolute;
+                top:calc(48vh - 100px);
+                width:100vw;
+                font-family: 'Poppins', sans-serif;
+                color:#fff;
+                z-index:99;
+            }
+            h1{
+                font-size:100px;
+                margin:0;
+            }
+            h2{
+                font-size:90px;
+                margin:0;
+            }*/
+            .container{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .picture-div {
+                position: relative;
+                width:150px;
+                display: inline-block;
+                margin: 5px 10px;
+                /*border-radius:50%;
+                position:absolute;
+                z-index:98;*/
+            }
+            /*.picture{
+                width: 100%;
+            }*/
+            .mouth{
+                position: absolute;
+            }
+            #belisario_mouth{
+                left: 50px;
+                top:167px;
+            }
+            #adriano_mouth{
+                left: 45px;
+                top:168px;
+            }
+            #jonas_mouth{
+                left: 46px;
+                top:172px;
+            }
+            #arthur_mouth{
+                left: 48px;
+                top:177px;
+            }
+
+            .openMouth {
+                -webkit-animation: openMouth 0.1s forwards;
+                -moz-animation: openMouth 0.1s forwards;
+                animation: openMouth 0.1s forwards;
+            }
+            @-moz-keyframes openMouth {
+                0% {-moz-transform:translateY(0);}
+                100% { -moz-transform:translateY(20px); }
+            }
+            @-webkit-keyframes openMouth {
+                0% {-webkit-transform:translateY(0);}
+                100% { -webkit-transform:translateY(20px); }
+            }
+            @keyframes openMouth {
+                0% {transform:translateY(0);}
+                100% { transform:translateY(20px); }
+            }
+
+            .closeMouth {
+                -webkit-animation: closeMouth 0.1s forwards;
+                -moz-animation: closeMouth 0.1s forwards;
+                animation: closeMouth 0.1s forwards;
+            }
+            @-moz-keyframes closeMouth {
+                0% { -moz-transform:translateY(20px); }
+                100% { -moz-transform:translateY(0); }
+            }
+            @-webkit-keyframes closeMouth {
+                0% { -webkit-transform:translateY(20px); }
+                100% { -webkit-transform:translateY(0); }
+            }
+            @keyframes closeMouth {
+                0% { transform:translateY(20px); }
+                100% { transform:translateY(0); }
+            }
+
+            .tilt {
+              /*-webkit-animation: tilt 2.5s linear infinite;
+                -moz-animation: tilt 2.5s linear infinite;
+                animation: tilt 2.5s linear infinite;*/
+            }
+            @-moz-keyframes tilt {
+                0% {-moz-transform:rotate(0deg);}
+                25% { -moz-transform: rotate(30deg); }
+                50% { -moz-transform: rotate(0deg); }
+                75% { -moz-transform: rotate(-30deg); }
+                100% { -moz-transform: rotate(0deg); }
+            }
+            @-webkit-keyframes tilt {
+                0% {-webkit-transform:rotate(0deg);}
+                25% { -webkit-transform: rotate(30deg); }
+                50% { -webkit-transform: rotate(0deg); }
+                75% { -webkit-transform: rotate(-30deg); }
+                100% { -webkit-transform: rotate(0deg); }
+            }
+            @keyframes tilt {
+                0% {transform:rotate(0deg);}
+                25% { transform: rotate(30deg); }
+                50% { transform: rotate(0deg); }
+                75% { transform: rotate(-30deg); }
+                100% { transform: rotate(0deg); }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="picture-div tilt">
+                <img class="picture" src="belisario.png">
+                <img class="mouth" id="belisario_mouth" src="belisario_mouth.png" data-sing-count="0">
+            </div>
+            <div class="picture-div tilt">
+                <img class="picture" src="adriano.png">
+                <img class="mouth" id="adriano_mouth" src="adriano_mouth.png" data-sing-count="0">
+            </div>
+            <div class="picture-div tilt">
+                <img class="picture" src="jonas.png">
+                <img class="mouth" id="jonas_mouth" src="jonas_mouth.png" data-sing-count="0">
+            </div>
+            <div class="picture-div tilt">
+                <img class="picture" src="arthur.png">
+                <img class="mouth" id="arthur_mouth" src="arthur_mouth.png" data-sing-count="0">
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>
+            function sing(p_Person) {
+                var $v_Mouth = $('#' + p_Person + '_mouth');
+                $v_Mouth.data('sing-count', parseInt($v_Mouth.data('sing-count')) + 1);
+                $v_Mouth.removeClass('openMouth closeMouth');
+                setTimeout(function(){
+                    $v_Mouth.addClass('openMouth');
+                },15);
+
+                var v_Audio = new Audio('scream.wav');
+                // var v_Audio = new Audio(p_Person + '.mp3');
+                v_Audio.addEventListener('ended', function(){
+                    var v_SingCount = parseInt($v_Mouth.data('sing-count')) - 1;
+                    $v_Mouth.data('sing-count', v_SingCount);
+                    if(v_SingCount == 0){
+                        $v_Mouth.removeClass('openMouth closeMouth').addClass('closeMouth');
+                    }
+                });
+                v_Audio.play();
+            }
+
+            function orchestra(){
+                sing('belisario');
+                sing('adriano');
+                sing('jonas');
+                sing('arthur');
+            }
+        </script>
+    </body>
+
+</html>
