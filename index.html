@@ -119,9 +119,9 @@
             }
 
             .tilt {
-              /*-webkit-animation: tilt 2.5s linear infinite;
+                -webkit-animation: tilt 2.5s linear infinite;
                 -moz-animation: tilt 2.5s linear infinite;
-                animation: tilt 2.5s linear infinite;*/
+                animation: tilt 2.5s linear infinite;
             }
             @-moz-keyframes tilt {
                 0% {-moz-transform:rotate(0deg);}
@@ -170,6 +170,15 @@
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>
+            var m_TeamMembers = [
+                'adriano',
+                'arthur',
+                'belisario',
+                'henrique',
+                'jonas',
+                'pablo'
+            ];
+
             function sing(p_Person) {
                 var $v_Mouth = $('#' + p_Person + '_mouth');
                 $v_Mouth.data('sing-count', parseInt($v_Mouth.data('sing-count')) + 1);
@@ -178,7 +187,7 @@
                     $v_Mouth.addClass('openMouth');
                 },15);
 
-                var v_Audio = new Audio('scream.wav');
+                var v_Audio = new Audio('hey.wav');
                 // var v_Audio = new Audio(p_Person + '.mp3');
                 v_Audio.addEventListener('ended', function(){
                     var v_SingCount = parseInt($v_Mouth.data('sing-count')) - 1;
@@ -191,10 +200,28 @@
             }
 
             function orchestra(){
-                sing('belisario');
-                sing('adriano');
-                sing('jonas');
-                sing('arthur');
+                $('.picture-div:not(.tilt)').addClass('tilt');
+                
+                singAfter('belisario', 0);
+                singAfter('adriano', 100);
+                singAfter('jonas', 200);
+                singAfter('arthur', 220);
+            }
+
+            function singAfter(p_Person, p_Time){
+                setTimeout(function(){
+                    sing(p_Person);
+                }, p_Time);
+            }
+
+            $(document).ready(function(){
+                loadAudios(); //TODO verificar se isso roda no celular ou se precisa de um botao pra carregar
+            });
+
+            function loadAudios(){
+                $(m_TeamMembers).each(function(){
+                    new Audio(p_Person + '.mp3');
+                });
             }
         </script>
     </body>
