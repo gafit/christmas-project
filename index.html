@@ -81,6 +81,10 @@
                 left: 48px;
                 top:177px;
             }
+            #pablo_mouth{
+                left: 53px;
+                top:176px;
+            }
 
             .openMouth {
                 -webkit-animation: openMouth 0.1s forwards;
@@ -166,6 +170,10 @@
                 <img class="picture" src="arthur.png">
                 <img class="mouth" id="arthur_mouth" src="arthur_mouth.png" data-sing-count="0">
             </div>
+            <div class="picture-div tilt">
+                <img class="picture" src="pablo.png">
+                <img class="mouth" id="pablo_mouth" src="pablo_mouth.png" data-sing-count="0">
+            </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -206,6 +214,7 @@
                 singAfter('adriano', 100);
                 singAfter('jonas', 200);
                 singAfter('arthur', 220);
+                singAfter('pablo', 260);
             }
 
             function singAfter(p_Person, p_Time){
@@ -215,12 +224,13 @@
             }
 
             $(document).ready(function(){
-                loadAudios(); //TODO verificar se isso roda no celular ou se precisa de um botao pra carregar
+                //TODO verificar se isso roda no celular ou se precisa de um botao pra carregar, e descomentar depois que tivermos os audios
+                //loadAudios();
             });
 
             function loadAudios(){
                 $(m_TeamMembers).each(function(){
-                    new Audio(p_Person + '.mp3');
+                    new Audio(this + '.mp3');
                 });
             }
         </script>
