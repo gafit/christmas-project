@@ -139,6 +139,16 @@
                 -moz-animation: tilt 2.5s linear infinite;
                 animation: tilt 2.5s linear infinite;
             }
+            .spin {
+                -webkit-animation: spin 5s linear infinite;
+                -moz-animation: spin 5s linear infinite;
+                animation: spin 5s linear infinite;
+            }
+            .reverse_spin {
+                -webkit-animation: reverse_spin 5s linear infinite;
+                -moz-animation: reverse_spin 5s linear infinite;
+                animation: reverse_spin 5s linear infinite;
+            }
             @-moz-keyframes tilt {
                 0% {-moz-transform:rotate(0deg);}
                 25% { -moz-transform: rotate(30deg); }
@@ -159,6 +169,30 @@
                 50% { transform: rotate(0deg); }
                 75% { transform: rotate(-30deg); }
                 100% { transform: rotate(0deg); }
+            }
+            @-moz-keyframes spin {
+                from { -moz-transform: rotate(0deg); }
+                to { -moz-transform: rotate(360deg); }
+            }
+            @-webkit-keyframes spin {
+                from { -webkit-transform: rotate(0deg); }
+                to { -webkit-transform: rotate(360deg); }
+            }
+            @keyframes spin {
+                from {transform:rotate(0deg);}
+                to {transform:rotate(360deg);}
+            }
+            @-moz-keyframes reverse_spin {
+                from { -moz-transform: rotate(0deg); }
+                to { -moz-transform: rotate(-360deg); }
+            }
+            @-webkit-keyframes reverse_spin {
+                from { -webkit-transform: rotate(0deg); }
+                to { -webkit-transform: rotate(-360deg); }
+            }
+            @keyframes reverse_spin {
+                from {transform:rotate(0deg);}
+                to {transform:rotate(-360deg);}
             }
         </style>
     </head>
@@ -328,8 +362,14 @@
             }
 
             function loadMembersDemon(){
+                $('.picture-div.tilt').removeClass('tilt');
+                $('.picture-div.spin').removeClass('spin');
+                $('.picture-div.reverse_spin').removeClass('reverse_spin');
                 $('.picture-div').each(function(c_Index){
                     $(this).find('.picture').attr('src', m_TeamMembers[c_Index] + '_demon.png');
+                    setTimeout(function() {
+                        $('.picture-div:eq(' + c_Index + ')').addClass(Math.floor(Math.random() * 5) > 2 ? 'spin' : 'reverse_spin');
+                    }, Math.floor(Math.random() * 5)*250);
                 });
             }
 
