@@ -245,8 +245,8 @@
                     $v_Mouth.addClass('openMouth');
                 },15);
 
-                var v_Audio = new Audio('hey.wav');
-                // var v_Audio = new Audio(p_Person + '.mp3');
+//                var v_Audio = new Audio('hey.wav');
+                 var v_Audio = new Audio(p_Person + '.mp3');
                 v_Audio.playbackRate = p_Speed;
                 v_Audio.addEventListener('ended', function(){
                     var v_SingCount = parseInt($v_Mouth.data('sing-count')) - 1;
