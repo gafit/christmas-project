@@ -55,6 +55,12 @@
                 width:150px;
                 display: inline-block;
                 margin: 5px 10px;
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none;
                 /*border-radius:50%;
                 position:absolute;
                 z-index:98;*/
@@ -86,6 +92,10 @@
             #pablo_mouth{
                 left: 53px;
                 top:176px;
+            }
+            #henrique_mouth{
+                left: 50px;
+                top:171px;
             }
 
             .openMouth {
@@ -156,39 +166,39 @@
     <body>
         <div class="container">
             <div class="picture-div">
-                <img class="picture" src="belisario.png">
-                <img class="mouth" id="belisario_mouth" src="belisario_mouth.png" data-sing-count="0">
+                <img class="picture">
+                <img class="mouth" data-sing-count="0">
             </div>
             <div class="picture-div">
-                <img class="picture" src="adriano.png">
-                <img class="mouth" id="adriano_mouth" src="adriano_mouth.png" data-sing-count="0">
+                <img class="picture">
+                <img class="mouth" data-sing-count="0">
             </div>
             <div class="picture-div">
-                <img class="picture" src="jonas.png">
-                <img class="mouth" id="jonas_mouth" src="jonas_mouth.png" data-sing-count="0">
+                <img class="picture">
+                <img class="mouth" data-sing-count="0">
             </div>
             <div class="picture-div">
-                <img class="picture" src="arthur.png">
-                <img class="mouth" id="arthur_mouth" src="arthur_mouth.png" data-sing-count="0">
+                <img class="picture">
+                <img class="mouth" data-sing-count="0">
             </div>
             <div class="picture-div">
-                <img class="picture" src="pablo.png">
-                <img class="mouth" id="pablo_mouth" src="pablo_mouth.png" data-sing-count="0">
+                <img class="picture">
+                <img class="mouth" data-sing-count="0">
+            </div>
+            <div class="picture-div">
+                <img class="picture">
+                <img class="mouth" data-sing-count="0">
             </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>
-            var m_TeamMembers = [
-                'adriano',
-                'arthur',
-                'belisario',
-                'henrique',
-                'jonas',
-                'pablo'
-            ];
+            var m_TeamMembers;
+            var NORMAL_SPEED = 1;
+            var SLOW_SPEED = 0.7;
+            var FAST_SPEED = 1.3;
 
-            function sing(p_Person) {
+            function sing(p_Person, p_Speed) {
                 var $v_Mouth = $('#' + p_Person + '_mouth');
                 $v_Mouth.data('sing-count', parseInt($v_Mouth.data('sing-count')) + 1);
                 $v_Mouth.removeClass('openMouth closeMouth');
@@ -198,6 +208,7 @@
 
                 var v_Audio = new Audio('hey.wav');
                 // var v_Audio = new Audio(p_Person + '.mp3');
+                v_Audio.playbackRate = p_Speed;
                 v_Audio.addEventListener('ended', function(){
                     var v_SingCount = parseInt($v_Mouth.data('sing-count')) - 1;
                     $v_Mouth.data('sing-count', v_SingCount);
@@ -210,29 +221,174 @@
 
             function orchestra(){
                 $('.picture-div:not(.tilt)').addClass('tilt');
-                
-                singAfter('belisario', 0);
-                singAfter('adriano', 100);
-                singAfter('jonas', 200);
-                singAfter('arthur', 220);
-                singAfter('pablo', 260);
+                var v_AudioDuration = 380;
+
+                singAfter(getRandomMember(), NORMAL_SPEED, 0);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, 2*v_AudioDuration);
+
+                var v_Offset = 300;
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 3*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 4*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 5*v_AudioDuration);
+
+                v_Offset = 600;
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 6*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 7*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 8*v_AudioDuration);//
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 9*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 10*v_AudioDuration);
+
+                v_Offset = 1300;
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 11*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 12*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 13*v_AudioDuration);
+
+                v_Offset = 1600;
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 14*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 15*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 16*v_AudioDuration);
+
+                v_Offset = 1900;
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 17*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 18*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 19*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 20*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, v_Offset + 21*v_AudioDuration);
+                singAfter(getRandomMember(), NORMAL_SPEED, 200 + v_Offset + 22*v_AudioDuration);
             }
 
-            function singAfter(p_Person, p_Time){
+            function imperialMarch(){
+                $('.picture-div:not(.tilt)').addClass('tilt');
+                var v_AudioDuration = 380;
+                var v_Offset = 500;
+
+                singDuetAfter(getRandomMember(), getRandomMember(), SLOW_SPEED, 0);
+                singDuetAfter(getRandomMember(), getRandomMember(), SLOW_SPEED, 450 + v_AudioDuration);
+                singDuetAfter(getRandomMember(), getRandomMember(), SLOW_SPEED, 2*450 + 2*v_AudioDuration);
+
+                singDuetAfter(getRandomMember(), getRandomMember(), NORMAL_SPEED, 300 + 2*450 + 3*v_AudioDuration);
+                singDuetAfter(getRandomMember(), getRandomMember(), NORMAL_SPEED, 500 + 2*450 + 4*v_AudioDuration);
+                singDuetAfter(getRandomMember(), getRandomMember(), NORMAL_SPEED, 700 + 2*450 + 5*v_AudioDuration);
+                singDuetAfter(getRandomMember(), getRandomMember(), NORMAL_SPEED, 800 + 2*450 + 6*v_AudioDuration);
+                singDuetAfter(getRandomMember(), getRandomMember(), NORMAL_SPEED, 1000 + 2*450 + 7*v_AudioDuration);
+                singDuetAfter(getRandomMember(), getRandomMember(), NORMAL_SPEED, 1200 + 2*450 + 8*v_AudioDuration);
+
+            }
+
+            function singAllAfter(p_Speed, p_Time){
+                $(m_TeamMembers).each(function(){
+                    singAfter(this, p_Speed, p_Time);
+                });
+            }
+
+            function singDuetAfter(p_Person1, p_Person2, p_Speed, p_Time){
+                singAfter(p_Person1, p_Speed, p_Time);
+                singAfter(p_Person2, p_Speed, p_Time);
+            }
+
+            function singAfter(p_Person, p_Speed, p_Time){
                 setTimeout(function(){
-                    sing(p_Person);
+                    sing(p_Person, p_Speed);
                 }, p_Time);
             }
 
             $(document).ready(function(){
+                m_TeamMembers = shuffle([
+                    'adriano',
+                    'arthur',
+                    'belisario',
+                    'henrique',
+                    'jonas',
+                    'pablo'
+                ]);
+
+                loadMembers();
                 //TODO verificar se isso roda no celular ou se precisa de um botao pra carregar, e descomentar depois que tivermos os audios
-                //loadAudios();
+                loadAudios();
+
+//                orchestra();
+//                imperialMarch();
+
+                $('#belisario_mouth').click(function(){
+                    loadMembersDemon();
+                    laughter();
+                });
             });
+
+            function getRandomMember(){
+                return m_TeamMembers[Math.floor(Math.random() * m_TeamMembers.length)];
+            }
+
+            function loadMembers(){
+                $('.picture-div').each(function(c_Index){
+                    $(this).find('.picture').attr('src', m_TeamMembers[c_Index] + '.png');
+                    $(this).find('.mouth').attr('src', m_TeamMembers[c_Index] + '_mouth.png').attr('id', m_TeamMembers[c_Index] + '_mouth');
+                });
+            }
+
+            function loadMembersDemon(){
+                $('.picture-div').each(function(c_Index){
+                    $(this).find('.picture').attr('src', m_TeamMembers[c_Index] + '_demon.png');
+                });
+            }
 
             function loadAudios(){
                 $(m_TeamMembers).each(function(){
                     new Audio(this + '.mp3');
                 });
+                new Audio('evil.wav');
+            }
+
+            function shuffle(p_Array) {
+                var v_CurrentIndex = p_Array.length, v_TemporaryValue, v_RandomIndex;
+                // While there remain elements to shuffle...
+                while (0 !== v_CurrentIndex) {
+                    // Pick a remaining element...
+                    v_RandomIndex = Math.floor(Math.random() * v_CurrentIndex);
+                    v_CurrentIndex -= 1;
+
+                    // And swap it with the current element.
+                    v_TemporaryValue = p_Array[v_CurrentIndex];
+                    p_Array[v_CurrentIndex] = p_Array[v_RandomIndex];
+                    p_Array[v_RandomIndex] = v_TemporaryValue;
+                }
+                return p_Array;
+            }
+
+            function laugh(p_Person) {
+                var $v_Mouth = $('#' + p_Person + '_mouth');
+                $v_Mouth.data('sing-count', parseInt($v_Mouth.data('sing-count')) + 1);
+                $v_Mouth.removeClass('openMouth closeMouth');
+                setTimeout(function(){
+                    $v_Mouth.addClass('openMouth');
+                },15);
+
+                var v_Audio = new Audio('evil.wav');
+                v_Audio.addEventListener('ended', function(){
+                    var v_SingCount = parseInt($v_Mouth.data('sing-count')) - 1;
+                    $v_Mouth.data('sing-count', v_SingCount);
+                    if(v_SingCount == 0){
+                        $v_Mouth.removeClass('openMouth closeMouth').addClass('closeMouth');
+                    }
+                });
+                v_Audio.play();
+            }
+
+            function laughAfter(p_Person, p_Speed, p_Time){
+                setTimeout(function(){
+                    laugh(p_Person, p_Speed);
+                }, p_Time);
+            }
+
+            function laughter(){
+                var v_Time = 0;
+                for(i = 0; i < 200; i++){
+                    $(m_TeamMembers).each(function(){
+                        laughAfter(this, NORMAL_SPEED, v_Time + Math.floor(Math.random() * 5)*150);
+                    });
+                    v_Time += 1500;
+                }
             }
         </script>
     </body>
